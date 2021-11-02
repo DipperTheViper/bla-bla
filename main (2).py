@@ -1,7 +1,5 @@
 import pandas as pd
 
-
-
 if __name__ == '__main__':
     columns = dict()
     dissimilarity_matrix = None
@@ -17,8 +15,7 @@ if __name__ == '__main__':
             if line[:10] == "@attribute":
                 if line[-2] == '}':
                     # tozih
-                    attr_type = 'Binary' if line[-11:-
-                                                 1] == "{'0', '1'}" else 'Nominal'
+                    attr_type = 'Binary' if line[-11:-1] == "{'0', '1'}" else 'Nominal'
                 elif line[-5:-1] == "real":
                     # tozih
                     attr_type = 'Numeric'
@@ -49,7 +46,6 @@ if __name__ == '__main__':
             {'name': key, 'mean': df[key].mean(), 'median': df[key].median(),
              'mode': df[key].mode()[0], 'variance': df[key].var(),
              'std': df[key].std()}, ignore_index=True, sort=False)
-
 
     output_file = open('./output.txt', 'w')
     output_file.write(features.to_csv(index=False) +
